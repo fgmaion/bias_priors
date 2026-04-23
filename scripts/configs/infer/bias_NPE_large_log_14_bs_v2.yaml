@@ -1,0 +1,33 @@
+# Specify prior
+prior:
+  module: 'ili.utils'
+  class: 'Uniform'
+  args:
+    low: [-10]
+    high: [10]
+
+embedding_net:
+  module: 'ili.embedding'
+  class: 'FCN'
+  args:
+    n_hidden: [128,128,128]
+    act_fn: "SiLU"
+
+# Specify the inference model
+model:
+  backend: 'lampe'
+  engine: 'NPE'  # Neural Posterior Estimation
+  name: 'bias_NPE_large_log_14_bs_v2'
+  nets:
+    - model: 'nsf'  # Masked Autoregressive Flow
+      hidden_features: 256
+      num_transforms: 5
+
+# Specify the neural training hyperparameters   
+train_args:
+  training_batch_size: 256
+  learning_rate: 0.0005
+  stop_after_epochs: 50
+
+device: 'cuda'  # Run on GPU
+out_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_results/bias_NPE_large_log_14_bs_v2'  # Where to save the posterior

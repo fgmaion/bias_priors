@@ -1,0 +1,4 @@
+in_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_data/'  # where to find the data
+
+x_file: 'theta_log_downsampled.npy'  # file name of the data
+theta_file: 'x_log_downsampled.npy'  # file name of the parameters
