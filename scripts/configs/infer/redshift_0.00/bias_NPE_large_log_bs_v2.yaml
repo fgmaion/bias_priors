@@ -30,4 +30,4 @@ train_args:
   stop_after_epochs: 50
 
 device: 'cuda'  # Run on GPU
-out_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_results/bias_NPE_large_log_bs_v2'  # Where to save the posterior
+out_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_results/redshift_0.00/bias_NPE_large_log_bs_v2'  # Where to save the posterior

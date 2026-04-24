@@ -6,8 +6,8 @@ from ili.inference import InferenceRunner
 
 import time
 
-data_name = 'bias_NPE_log_14.yaml'
-infer_name = 'bias_NPE_large_log_14_bs_v2.yaml'
+data_name = 'redshift_0.00/bias_NPE_log.yaml'
+infer_name = 'redshift_0.00/bias_NPE_large_log_bs_v2.yaml'
 
 # Load Training Data
 all_loader = StaticNumpyLoader.from_config("configs/data/"+data_name)

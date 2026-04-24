@@ -18,10 +18,10 @@ def downsample(mstar, field, nbar, Nbins):
     fsel = {}
     for i in range(Nbins):
         field_bin = field[hist==(i+1)]
-        # TODO: In its current form, this can repeat the same galaxy in even in the case where we have enough objects
-        # we should perhaps change it, since that means we are actually losing some information.
         try:
-            rand_ints = np.random.randint(low=0, high=len(field_bin), size=int(nbar * (bins[i+1]-bins[i])) )
+            low = 0
+            high = len(field_bin)
+            rand_ints = np.random.choice(np.arange(low,high), size=int(nbar * (bins[i+1]-bins[i])), replace=False)
             fsel[i] = field_bin[rand_ints]
         except:
             print("There were no galaxies in bin {:d} of this sim".format(i))
@@ -170,14 +170,14 @@ if __name__ == '__main__':
 
     theta = combine_pars_sm_optimized(cosmo_astro, mstar_sel)
     if d_sample:
-        res_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_0.47/x_log_14_downsampled.npy"
-        par_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_0.47/theta_log_14_downsampled.npy"
+        res_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_{:.2f}/x_log_downsampled.npy".format(z)
+        par_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_{:.2f}/theta_log_downsampled.npy".format(z)
     else:
-        res_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redsfhit_0.47/x_log.npy"
-        par_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_0.47/theta_log.npy"
+        res_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redsfhit_{:.2f}/x_log.npy".format(z)
+        par_out_name = "/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_{:.2f}/theta_log.npy".format(z)
  
     np.save(res_out_name, x)
-    print("Saved the results at {res_out_name}")
+    print("Saved the results at", res_out_name)
 
     np.save(par_out_name, theta)
-    print("Saved the parameters at {par_out_name}")
+    print("Saved the parameters at", par_out_name)

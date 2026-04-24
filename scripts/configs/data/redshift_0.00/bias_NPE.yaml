@@ -1,4 +1,4 @@
-in_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_data/'  # where to find the data
+in_dir: '/mnt/home/fmaion/storage/projects/bias_priors/training_data/redshift_0.00/'  # where to find the data
 
 x_file: 'theta_downsampled.npy'  # file name of the data
 theta_file: 'x_downsampled.npy'  # file name of the parameters
